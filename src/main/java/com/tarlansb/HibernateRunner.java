@@ -1,5 +1,6 @@
 package com.tarlansb;
 
+import com.tarlansb.entity.Role;
 import com.tarlansb.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -28,11 +29,12 @@ public class HibernateRunner {
             session.beginTransaction();
 
             User user = User.builder()
-                    .username("ivan@gmail.com")
+                    .username("ivan1@gmail.com")
                     .firstname("Ivan")
                     .lastname("Ivanov")
                     .birthDate(LocalDate.of(2000, 1, 19))
                     .age(20)
+                    .role(Role.ADMIN)
                     .build();
             session.save(user);
 
