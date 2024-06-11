@@ -7,5 +7,6 @@ CREATE TABLE users
     lastname VARCHAR(128),
     birth_date DATE,
     age INT,
-    role VARCHAR (32)
+    role VARCHAR (32),
+    info JSONB
 );
