@@ -1,12 +1,12 @@
 CREATE TABLE users
 (
-    id         BIGINT PRIMARY KEY,
-    username   VARCHAR(128) UNIQUE,
-    firstname  VARCHAR(128),
-    lastname   VARCHAR(128),
-    birth_date DATE,
-    role       VARCHAR(32),
-    info       JSONB
+    firstname VARCHAR(128) NOT NULL ,
+    lastname VARCHAR(128) NOT NULL ,
+    birth_date DATE NOT NULL ,
+    username VARCHAR(128) UNIQUE ,
+    role VARCHAR(32),
+    info JSONB,
+    PRIMARY KEY (firstname, lastname, birth_date)
 );
 
 CREATE SEQUENCE users_id_seq
