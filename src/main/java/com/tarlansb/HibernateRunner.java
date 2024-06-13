@@ -1,5 +1,6 @@
 package com.tarlansb;
 
+import com.tarlansb.entity.PersonalInfo;
 import com.tarlansb.entity.User;
 import com.tarlansb.util.HibernateUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -14,9 +15,11 @@ public class HibernateRunner {
 
     public static void main(String[] args) throws SQLException {
         User user = User.builder()
-                .username("ivan@gmail.com")
-                .lastname("Ivanov")
-                .firstname("Ivan")
+                .username("petr@gmail.com")
+                .personalInfo(PersonalInfo.builder()
+                        .lastname("Petrov")
+                        .firstname("Petr")
+                        .build())
                 .build();
         log.info("User entity is in transient state, object: {}", user);
 
