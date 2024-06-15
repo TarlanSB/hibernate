@@ -1,3 +1,13 @@
+DROP TABLE IF EXISTS users;
+
+DROP TABLE IF EXISTS company;
+
+CREATE TABLE company
+(
+    id   SERIAL PRIMARY KEY,
+    name VARCHAR(64) NOT NULL UNIQUE
+);
+
 CREATE TABLE users
 (
     id         BIGSERIAL PRIMARY KEY,
@@ -10,18 +20,12 @@ CREATE TABLE users
     company_id INT REFERENCES company (id)
 );
 
-CREATE TABLE company
-(
-    id   SERIAL PRIMARY KEY,
-    name VARCHAR(64) NOT NULL UNIQUE
-);
+
 
 CREATE SEQUENCE users_id_seq
     owned by users.id;
 
 DROP SEQUENCE users_id_seq;
-
-DROP TABLE IF EXISTS users;
 
 CREATE TABLE all_sequence
 (
