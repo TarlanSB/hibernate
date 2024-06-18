@@ -1,7 +1,9 @@
 package com.tarlansb;
 
+import com.tarlansb.entity.Chat;
 import com.tarlansb.entity.Company;
 import com.tarlansb.entity.User;
+import com.tarlansb.entity.UserChat;
 import com.tarlansb.util.HibernateUtil;
 import lombok.Cleanup;
 import org.hibernate.Hibernate;
@@ -16,6 +18,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Instant;
 import java.util.Arrays;
 
 import static java.util.Optional.ofNullable;
@@ -30,7 +33,18 @@ class HibernateRunnerTest {
             session.beginTransaction();
 
             var user = session.get(User.class, 10L);
-            user.getChats().clear();
+            var chat = session.get(Chat.class, 1L);
+
+            var userChat = UserChat.builder()
+                    .createdAt(Instant.now())
+                    .createdBy(user.getUsername())
+                    .build();
+            userChat.setUser(user);
+            userChat.setChat(chat);
+
+            session.save(userChat);
+
+//            user.getChats().clear();
 
 //            var chat = Chat.builder()
 //                    .name("dmdev")
@@ -42,6 +56,7 @@ class HibernateRunnerTest {
             session.getTransaction().commit();
         }
     }
+
 
     @Test
     void checkOneToOne() {

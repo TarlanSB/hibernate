@@ -4,6 +4,8 @@ DROP TABLE IF EXISTS company;
 
 DROP TABLE IF EXISTS profile;
 
+DROP TABLE IF EXISTS users_chat;
+
 CREATE TABLE chat
 (
     id BIGSERIAL PRIMARY KEY ,
@@ -12,9 +14,11 @@ CREATE TABLE chat
 
 CREATE TABLE users_chat
 (
+    id BIGSERIAL PRIMARY KEY ,
     user_id BIGINT REFERENCES users (id),
     chat_id BIGINT REFERENCES chat (id),
-    PRIMARY KEY (user_id, chat_id)
+    created_at TIMESTAMP NOT NULL ,
+    created_by VARCHAR(128) NOT NULL
 );
 
 CREATE TABLE profile
