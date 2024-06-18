@@ -4,6 +4,7 @@ import com.tarlansb.entity.Chat;
 import com.tarlansb.entity.Company;
 import com.tarlansb.entity.User;
 import com.tarlansb.entity.UserChat;
+import com.tarlansb.util.HibernateTestUtil;
 import com.tarlansb.util.HibernateUtil;
 import lombok.Cleanup;
 import org.hibernate.Hibernate;
@@ -28,7 +29,7 @@ class HibernateRunnerTest {
 
     @Test
     void checkH2() {
-        try (var sessionFactory = HibernateUtil.buildSessionFactory();
+        try (var sessionFactory = HibernateTestUtil.buildSessionFactory();
              var session = sessionFactory.openSession()) {
             session.beginTransaction();
 
