@@ -1,9 +1,6 @@
 package com.tarlansb.entity;
 
-import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.*;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,9 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
+
 import java.util.List;
-import java.util.Set;
+
 
 @Data
 @NoArgsConstructor
@@ -24,7 +21,7 @@ import java.util.Set;
 @Builder
 @Entity
 @Table(name = "users", schema = "public")
-@TypeDef(name = "tarlansb", typeClass = JsonBinaryType.class)
+//@TypeDef(name = "tarlansb", typeClass = JsonBinaryType.class)
 public class User implements Comparable<User> {
 
     @Id
@@ -34,11 +31,11 @@ public class User implements Comparable<User> {
     @AttributeOverride(name = "birthDate", column = @Column(name = "birth_date"))
     private PersonalInfo personalInfo;
 
-    @Column(unique = true)
+    @Column(unique = true, columnDefinition = "")
     private String username;
 
-    @Type(type = "tarlansb")
-    private String info;
+//    @Type(type = "tarlansb")
+//    private String info;
 
     @Enumerated(EnumType.STRING)
     private Role role;
