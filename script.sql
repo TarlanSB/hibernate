@@ -2,6 +2,15 @@ DROP TABLE IF EXISTS users;
 
 DROP TABLE IF EXISTS company;
 
+DROP TABLE IF EXISTS profile;
+
+CREATE TABLE profile
+(
+    user_id BIGINT PRIMARY KEY REFERENCES users (id),
+    street VARCHAR(128),
+    language CHAR(2)
+);
+
 CREATE TABLE company
 (
     id   SERIAL PRIMARY KEY,
@@ -19,8 +28,6 @@ CREATE TABLE users
     info       JSONB,
     company_id INT REFERENCES company (id)
 );
-
-
 
 CREATE SEQUENCE users_id_seq
     owned by users.id;
