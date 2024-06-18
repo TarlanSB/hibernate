@@ -19,7 +19,7 @@ import javax.persistence.*;
 @Builder
 @Entity
 @Table(name = "users", schema = "public")
-@TypeDef(name = "dmdev", typeClass = JsonBinaryType.class)
+@TypeDef(name = "tarlansb", typeClass = JsonBinaryType.class)
 public class User {
 
     @Id
@@ -32,7 +32,7 @@ public class User {
     @Column(unique = true)
     private String username;
 
-    @Type(type = "dmdev")
+    @Type(type = "tarlansb")
     private String info;
 
     @Enumerated(EnumType.STRING)
