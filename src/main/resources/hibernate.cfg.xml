@@ -17,6 +17,8 @@
         <mapping class="com.tarlansb.entity.Profile"/>
         <mapping class="com.tarlansb.entity.Chat"/>
         <mapping class="com.tarlansb.entity.UserChat"/>
+        <mapping class="com.tarlansb.entity.Programmer"/>
+        <mapping class="com.tarlansb.entity.Manager"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
