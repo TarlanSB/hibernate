@@ -18,5 +18,6 @@
         <mapping class="com.tarlansb.entity.UserChat"/>
         <mapping class="com.tarlansb.entity.Programmer"/>
         <mapping class="com.tarlansb.entity.Manager"/>
+        <mapping class="com.tarlansb.entity.Payment"/>
     </session-factory>
 </hibernate-configuration>
