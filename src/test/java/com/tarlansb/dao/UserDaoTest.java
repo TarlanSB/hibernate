@@ -1,6 +1,6 @@
 package com.tarlansb.dao;
 
-import com.tarlansb.dto.CompanyDto;
+import com.tarlansb.dto.PaymentFilter;
 import com.tarlansb.entity.Payment;
 import com.tarlansb.entity.User;
 import com.tarlansb.util.HibernateTestUtil;
@@ -111,7 +111,11 @@ class UserDaoTest {
         @Cleanup Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Double averagePaymentAmount = userDao.findAveragePaymentAmountByFirstAndLastNames(session, "Bill", "Gates");
+        PaymentFilter filter = PaymentFilter.builder()
+                .lastName("Gates")
+                .firstName("Bill")
+                .build();
+        Double averagePaymentAmount = userDao.findAveragePaymentAmountByFirstAndLastNames(session, filter);
         assertThat(averagePaymentAmount).isEqualTo(300.0);
 
         session.getTransaction().commit();
