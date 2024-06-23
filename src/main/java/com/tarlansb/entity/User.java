@@ -80,8 +80,10 @@ public class User implements Comparable<User>, BaseEntity<Long> {
     private Set<UserChat> userChats = new HashSet<>();
 
     @Builder.Default
-    @BatchSize(size = 3)
-//    1 + N -> 1 + 5 -> 1 + 5/3 -> 3
+//    @BatchSize(size = 3)
+//    1 + N -> 1 + 500 -> 1 + 500/3 -> 3
+//    1 + N -> 1 + 1 -> 2
+//    @Fetch(FetchMode.SUBSELECT)
     @OneToMany(mappedBy = "receiver")
     private List<Payment> payments = new ArrayList<>();
 
